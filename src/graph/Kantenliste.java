@@ -8,7 +8,7 @@ public class Kantenliste {
 	private ArrayList<Kante> kanten;
 	
 	public Kantenliste(int knotenanzahl) {
-		this.knotenanzahl = knotenanzahl;
+		this.setKnotenanzahl(knotenanzahl);
 		this.setKanten(new ArrayList<Kante>());
 	}
 	
@@ -34,6 +34,14 @@ public class Kantenliste {
 	public void setKanten(ArrayList<Kante> kanten) {
 		this.kanten = kanten;
 	
+	}
+
+	public int getKnotenanzahl() {
+		return knotenanzahl;
+	}
+
+	public void setKnotenanzahl(int knotenanzahl) {
+		this.knotenanzahl = knotenanzahl;
 	}
 
 }
