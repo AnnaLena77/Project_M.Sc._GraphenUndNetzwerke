@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
+import graph.Adjazenzliste;
 import graph.Adjazenzmatrix;
 import graph.Kante;
 import graph.Kantenliste;
@@ -18,9 +19,9 @@ public class Start {
 		Dotformat dot = null;
 		
 		Kantenliste k = readFile("k5");
-		Adjazenzmatrix adj = kantenlisteToAdjazenzmatrix(k);
-		System.out.println(Arrays.deepToString(adj.getAdjazenzmatrix()));
-		dot.adjazenzmatrixToDotformat(adj, "k5");
+		Adjazenzliste ali = kantenlisteToAdjazenzliste(k);
+		dot.adjazenzlisteToDotformat(ali, "k5");
+		
 	}
 	
 	public static Adjazenzmatrix kantenlisteToAdjazenzmatrix(Kantenliste k) {
@@ -33,6 +34,16 @@ public class Start {
 			//adj.getAdjazenzmatrix()[endknoten][startknoten]=1; Achtung! Wird für gerichtete Graphen gebraucht!
 		}
 		return adj;
+	}
+	
+	public static Adjazenzliste kantenlisteToAdjazenzliste(Kantenliste k) {
+		Adjazenzliste ali = new Adjazenzliste(k.getKnotenanzahl());
+		for (int i = 0; i < k.size(); i++) {
+			int startknoten = k.getKanten().get(i).getStartknoten()-1;
+			int endknoten = k.getKanten().get(i).getEndknoten();
+			ali.getAdjazenzliste()[startknoten].add(endknoten);
+		}
+		return ali;
 	}
 	
 	public static Kantenliste readFile(String file) {

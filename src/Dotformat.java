@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 
+import graph.Adjazenzliste;
 import graph.Adjazenzmatrix;
 import graph.Kantenliste;
 
@@ -54,6 +55,30 @@ public class Dotformat {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void adjazenzlisteToDotformat(Adjazenzliste ali, String name) {
+		newFile(name);
+		try {
+			BufferedWriter myWriter = new BufferedWriter(new FileWriter("filesDot/" + name + ".dot"));
+			myWriter.write("graph{");
+			myWriter.newLine();
+			for(int i=0; i<ali.getAdjazenzliste().length; i++) {
+				for(int j = 1; j<ali.getAdjazenzliste()[i].size(); j++) {
+						myWriter.write((Integer.toString(ali.getAdjazenzliste()[i].get(0))));
+						myWriter.write(" -- ");
+						myWriter.write((Integer.toString(ali.getAdjazenzliste()[i].get(j))));
+						myWriter.newLine();
+					}
+				}
+			myWriter.write("}");
+			myWriter.close();
+			System.out.println("Successfully wrote to the file.");
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+	}
+
 	
 	public static void newFile(String name) {
 		try {
