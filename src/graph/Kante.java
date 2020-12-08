@@ -3,10 +3,17 @@ package graph;
 public class Kante {
 	private int startknoten;
 	private int endknoten;
+	private int weight;
 
 	public Kante(int startknoten, int endknoten) {
 		this.setStartknoten(startknoten);
 		this.setEndknoten(endknoten);
+	}
+	
+	public Kante(int startknoten, int endknoten, int weight) {
+		this.setStartknoten(startknoten);
+		this.setEndknoten(endknoten);
+		this.setWeight(weight);
 	}
 
 	public int getStartknoten() {
@@ -23,6 +30,14 @@ public class Kante {
 
 	public void setEndknoten(int endknoten) {
 		this.endknoten = endknoten;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
 	}
 	
 }

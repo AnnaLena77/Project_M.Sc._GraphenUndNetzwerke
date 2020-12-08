@@ -2,6 +2,7 @@ package graph;
 
 public class Adjazenzmatrix {
 	private int[][] adjazenzmatrix;
+	private boolean gewichtet;
 	
 	public Adjazenzmatrix(int knotenanzahl) {
 		this.adjazenzmatrix = new int[knotenanzahl][knotenanzahl];
@@ -14,5 +15,13 @@ public class Adjazenzmatrix {
 	
 	public int[][] getAdjazenzmatrix() {
 		return this.adjazenzmatrix;
+	}
+
+	public boolean isGewichtet() {
+		return gewichtet;
+	}
+
+	public void setGewichtet(boolean gewichtet) {
+		this.gewichtet = gewichtet;
 	}
 }

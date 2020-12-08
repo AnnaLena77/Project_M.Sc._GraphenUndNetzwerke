@@ -14,13 +14,29 @@ public class Dotformat {
 		newFile(name);
 		try {
 			BufferedWriter myWriter = new BufferedWriter(new FileWriter("filesDot/" + name + ".dot"));
-			myWriter.write("graph{");
-			myWriter.newLine();
-			for (int i = 0; i < k.size(); i++) {
-				myWriter.write(Integer.toString(k.getKanten().get(i).getStartknoten()));
-				myWriter.write(" -- ");
-				myWriter.write(Integer.toString(k.getKanten().get(i).getEndknoten()));
+			if(k.getKanten().get(0).getWeight()==0) {
+				myWriter.write("graph{");
 				myWriter.newLine();
+				for (int i = 0; i < k.size(); i++) {
+					myWriter.write(Integer.toString(k.getKanten().get(i).getStartknoten()));
+					myWriter.write(" -- ");
+					myWriter.write(Integer.toString(k.getKanten().get(i).getEndknoten()));
+					myWriter.newLine();
+				}
+
+			}
+			else {
+				myWriter.write("digraph{");
+				myWriter.newLine();
+				for (int i = 0; i < k.size(); i++) {
+					myWriter.write(Integer.toString(k.getKanten().get(i).getStartknoten()));
+					myWriter.write(" -> ");
+					myWriter.write(Integer.toString(k.getKanten().get(i).getEndknoten()));
+					myWriter.write(" [label=");
+					myWriter.write(Integer.toString(k.getKanten().get(i).getWeight()));
+					myWriter.write("]");
+					myWriter.newLine();
+				}
 			}
 			myWriter.write("}");
 			myWriter.close();
@@ -35,15 +51,33 @@ public class Dotformat {
 		newFile(name);
 		try {
 			BufferedWriter myWriter = new BufferedWriter(new FileWriter("filesDot/" + name + ".dot"));
-			myWriter.write("graph{");
-			myWriter.newLine();
-			for(int i=0; i<adj.getAdjazenzmatrix().length; i++) {
-				for(int j=0; j<adj.getAdjazenzmatrix().length; j++) {
-					if(adj.getAdjazenzmatrix()[i][j]==1) {
-						myWriter.write(Integer.toString(i+1));
-						myWriter.write(" -- ");
-						myWriter.write(Integer.toString(j+1));
-						myWriter.newLine();
+			if(!adj.isGewichtet()) {
+				myWriter.write("graph{");
+				myWriter.newLine();
+				for(int i=0; i<adj.getAdjazenzmatrix().length; i++) {
+					for(int j=0; j<adj.getAdjazenzmatrix().length; j++) {
+						if(adj.getAdjazenzmatrix()[i][j]==1) {
+							myWriter.write(Integer.toString(i+1));
+							myWriter.write(" -- ");
+							myWriter.write(Integer.toString(j+1));
+							myWriter.newLine();
+						}
+					}
+				}
+			} else {
+				myWriter.write("digraph{");
+				myWriter.newLine();
+				for(int i=0; i<adj.getAdjazenzmatrix().length; i++) {
+					for(int j=0; j<adj.getAdjazenzmatrix().length; j++) {
+						if(adj.getAdjazenzmatrix()[i][j]!=0) {
+							myWriter.write(Integer.toString(i+1));
+							myWriter.write(" -> ");
+							myWriter.write(Integer.toString(j+1));
+							myWriter.write(" [label=");
+							myWriter.write(Integer.toString(adj.getAdjazenzmatrix()[i][j]));
+							myWriter.write("]");
+							myWriter.newLine();
+						}
 					}
 				}
 			}
@@ -60,6 +94,7 @@ public class Dotformat {
 		newFile(name);
 		try {
 			BufferedWriter myWriter = new BufferedWriter(new FileWriter("filesDot/" + name + ".dot"));
+			if(!ali.isGerichtet()) {
 			myWriter.write("graph{");
 			myWriter.newLine();
 			for(int i=0; i<ali.getAdjazenzliste().length; i++) {
@@ -70,6 +105,18 @@ public class Dotformat {
 						myWriter.newLine();
 					}
 				}
+			} else {
+				myWriter.write("digraph{");
+				myWriter.newLine();
+				for(int i=0; i<ali.getAdjazenzliste().length; i++) {
+					for(int j = 1; j<ali.getAdjazenzliste()[i].size(); j++) {
+							myWriter.write((Integer.toString(ali.getAdjazenzliste()[i].get(0))));
+							myWriter.write(" -> ");
+							myWriter.write((Integer.toString(ali.getAdjazenzliste()[i].get(j))));
+							myWriter.newLine();
+					}
+				}
+			}
 			myWriter.write("}");
 			myWriter.close();
 			System.out.println("Successfully wrote to the file.");

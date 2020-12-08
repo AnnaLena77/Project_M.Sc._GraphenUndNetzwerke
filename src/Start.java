@@ -18,9 +18,13 @@ public class Start {
 
 		Dotformat dot = null;
 		
-		Kantenliste k = readFile("k5");
+		Kantenliste k = readFile("bellmannford");
+		//Adjazenzmatrix ad = kantenlisteToAdjazenzmatrix(k);
+		//dot.adjazenzmatrixToDotformat(ad, "bellmannford");
+		//dot.kantenlisteToDotformat(k, "bellmannford");
 		Adjazenzliste ali = kantenlisteToAdjazenzliste(k);
-		dot.adjazenzlisteToDotformat(ali, "k5");
+		dot.adjazenzlisteToDotformat(ali, "bellmannford");
+		
 		
 	}
 	
@@ -30,14 +34,27 @@ public class Start {
 			
 			int startknoten = k.getKanten().get(i).getStartknoten()-1;
 			int endknoten = k.getKanten().get(i).getEndknoten()-1;
-			adj.getAdjazenzmatrix()[startknoten][endknoten]=1;
-			//adj.getAdjazenzmatrix()[endknoten][startknoten]=1; Achtung! Wird für gerichtete Graphen gebraucht!
+			//ungerichtete Graphen
+			if(k.getKanten().get(i).getWeight()==0) {
+				adj.setGewichtet(false);
+				adj.getAdjazenzmatrix()[startknoten][endknoten]=1;
+			//gewichtete Graphen
+			} else {
+				adj.setGewichtet(true);
+				adj.getAdjazenzmatrix()[startknoten][endknoten]= k.getKanten().get(i).getWeight();
+			}
 		}
 		return adj;
 	}
 	
 	public static Adjazenzliste kantenlisteToAdjazenzliste(Kantenliste k) {
 		Adjazenzliste ali = new Adjazenzliste(k.getKnotenanzahl());
+		if(k.getKanten().get(0).getWeight()==0) {
+			ali.setGerichtet(false);
+		}
+		else {
+			ali.setGerichtet(true);
+		}
 		for (int i = 0; i < k.size(); i++) {
 			int startknoten = k.getKanten().get(i).getStartknoten()-1;
 			int endknoten = k.getKanten().get(i).getEndknoten();
@@ -58,7 +75,14 @@ public class Start {
 			
 			while(line != null) {
 				String[] splitline = line.split(" ");
-				k.addKante(new Kante(Integer.parseInt(splitline[0]), Integer.parseInt(splitline[1])));
+				//Ungerichteter Graph
+				if(splitline.length==2) {
+					k.addKante(new Kante(Integer.parseInt(splitline[0]), Integer.parseInt(splitline[1])));
+				}
+				//gewichteter Graph
+				else {
+					k.addKante(new Kante(Integer.parseInt(splitline[0]), Integer.parseInt(splitline[2]), Integer.parseInt(splitline[1])));
+				}
 				line = reader.readLine();
 			}
 			
