@@ -28,7 +28,7 @@ public class Sort {
 				indegrees[(ali[i].get(j))-1]++; //-1 damit Stelle 0 in Array
 			}
 		}
-		System.out.println(Arrays.toString(indegrees));
+		//System.out.println(Arrays.toString(indegrees));
 		
 		//Erstes Element ohne indegree in Queue einfügen:
 		for (int k=0; k<indegrees.length; k++) {

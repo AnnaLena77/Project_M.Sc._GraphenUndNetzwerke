@@ -20,12 +20,12 @@ public class Start {
 		Dotformat dot = null;
 		Sort sort = null;
 		
-		Kantenliste k = readFile("wiki");
+		Kantenliste k = readFile("youtube");
 		//Adjazenzmatrix ad = kantenlisteToAdjazenzmatrix(k);
 		//dot.adjazenzmatrixToDotformat(ad, "bellmannford");
 		//dot.kantenlisteToDotformat(k, "bellmannford");
 		Adjazenzliste ali = kantenlisteToAdjazenzliste(k);
-		//dot.adjazenzlisteToDotformat(ali, "primkruskal");
+		dot.adjazenzlisteToDotformat(ali, "youtube");
 		sort.Topsort(ali);
 		
 		
