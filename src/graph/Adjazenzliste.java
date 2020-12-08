@@ -11,7 +11,7 @@ public class Adjazenzliste {
 		adjazenzliste = new ArrayList[knotenanzahl];
 		for(int i=0; i<knotenanzahl; i++) {
 			adjazenzliste[i] = new ArrayList<Integer>();
-			adjazenzliste[i].add(i+1);
+			//adjazenzliste[i].add(i+1);
 		}
 	}
 	public ArrayList<Integer>[] getAdjazenzliste(){

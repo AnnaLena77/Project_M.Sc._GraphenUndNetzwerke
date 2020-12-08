@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
+import Topsort.Sort;
 import graph.Adjazenzliste;
 import graph.Adjazenzmatrix;
 import graph.Kante;
@@ -17,13 +18,15 @@ public class Start {
 		
 
 		Dotformat dot = null;
+		Sort sort = null;
 		
-		Kantenliste k = readFile("bellmannford");
+		Kantenliste k = readFile("youtube");
 		//Adjazenzmatrix ad = kantenlisteToAdjazenzmatrix(k);
 		//dot.adjazenzmatrixToDotformat(ad, "bellmannford");
 		//dot.kantenlisteToDotformat(k, "bellmannford");
 		Adjazenzliste ali = kantenlisteToAdjazenzliste(k);
-		dot.adjazenzlisteToDotformat(ali, "bellmannford");
+		//dot.adjazenzlisteToDotformat(ali, "primkruskal");
+		sort.Topsort(ali);
 		
 		
 	}

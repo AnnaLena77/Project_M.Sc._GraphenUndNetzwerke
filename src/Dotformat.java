@@ -98,8 +98,8 @@ public class Dotformat {
 			myWriter.write("graph{");
 			myWriter.newLine();
 			for(int i=0; i<ali.getAdjazenzliste().length; i++) {
-				for(int j = 1; j<ali.getAdjazenzliste()[i].size(); j++) {
-						myWriter.write((Integer.toString(ali.getAdjazenzliste()[i].get(0))));
+				for(int j = 0; j<ali.getAdjazenzliste()[i].size(); j++) {
+						myWriter.write(i+1);
 						myWriter.write(" -- ");
 						myWriter.write((Integer.toString(ali.getAdjazenzliste()[i].get(j))));
 						myWriter.newLine();
@@ -109,8 +109,8 @@ public class Dotformat {
 				myWriter.write("digraph{");
 				myWriter.newLine();
 				for(int i=0; i<ali.getAdjazenzliste().length; i++) {
-					for(int j = 1; j<ali.getAdjazenzliste()[i].size(); j++) {
-							myWriter.write((Integer.toString(ali.getAdjazenzliste()[i].get(0))));
+					for(int j = 0; j<ali.getAdjazenzliste()[i].size(); j++) {
+							myWriter.write(Integer.toString(i+1));
 							myWriter.write(" -> ");
 							myWriter.write((Integer.toString(ali.getAdjazenzliste()[i].get(j))));
 							myWriter.newLine();
