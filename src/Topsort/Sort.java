@@ -33,24 +33,29 @@ public class Sort {
 		//Erstes Element ohne indegree in Queue einfügen:
 		for (int k=0; k<indegrees.length; k++) {
 			if(indegrees[k]==0) {
+				//Knoten immer 1 mehr, da kein Knoten 0
 				q.add(k+1);
 			}
 		}
 		
+		//Jeder Knoten wird genau einmal in das Array Topsort geschrieben (Sortierung).
 		for(int l = 0; l<indegrees.length; l++) {
 			
+			//Wenn Queue leer wird, bevor alle Knoten eingetragen wurden, gibt es einen Zyklus!
 			if(q.isEmpty()) {
 				System.out.println("Der Graph enthält einen Zyklus und kann nicht topologisch sortiert werden");
 			}
-			topsort[l] = q.poll();
+			//Array topsort befüllen mit 1. Knoten aus der Queue
+			topsort[l] = q.poll(); //Knoten löschen
 			
+			//Durch die Liste des entsprechenden 1. Knotens aus der Queue gehen
 			for(int m : ali[topsort[l]-1]) {
-				System.out.println("Das ist m:" +m);
-				indegrees[m-1]--;
-				if(indegrees[m-1]==0) {
-					System.out.println(m);
+				//System.out.println("Das ist m:" +m);
+				indegrees[m-1]--; //Alle Kanten, mit denen der gelöschte Knoten verbunden war, werden aus der Liste gelöscht
+				if(indegrees[m-1]==0) { //Wenn ein Knoten den Wert 0 bekommt, keine weitere Verbindung mehr hat, kommt dieser in die Queue
+					//System.out.println(m);
 					q.add(m);
-					System.out.println(m + " wurde zu topsort hinzugefügt");
+					//System.out.println(m + " wurde zu topsort hinzugefügt");
 				}
 			}
 		}

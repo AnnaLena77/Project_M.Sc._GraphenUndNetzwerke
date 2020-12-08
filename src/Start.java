@@ -20,7 +20,7 @@ public class Start {
 		Dotformat dot = null;
 		Sort sort = null;
 		
-		Kantenliste k = readFile("youtube");
+		Kantenliste k = readFile("wiki");
 		//Adjazenzmatrix ad = kantenlisteToAdjazenzmatrix(k);
 		//dot.adjazenzmatrixToDotformat(ad, "bellmannford");
 		//dot.kantenlisteToDotformat(k, "bellmannford");
