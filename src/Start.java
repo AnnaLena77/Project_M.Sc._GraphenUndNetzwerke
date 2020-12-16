@@ -6,11 +6,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-import Topsort.Sort;
+import algorithms.Topsort;
 import graph.Adjazenzliste;
 import graph.Adjazenzmatrix;
 import graph.Kante;
 import graph.Kantenliste;
+import algorithms.Kruskal;
 
 public class Start {
 	
@@ -18,15 +19,16 @@ public class Start {
 		
 
 		Dotformat dot = null;
-		Sort sort = null;
+		//Sort sort = null;
 		
-		Kantenliste k = readFile("youtube");
+		Kantenliste k = readFile("kruskalwiki");
 		//Adjazenzmatrix ad = kantenlisteToAdjazenzmatrix(k);
 		//dot.adjazenzmatrixToDotformat(ad, "bellmannford");
-		//dot.kantenlisteToDotformat(k, "bellmannford");
-		Adjazenzliste ali = kantenlisteToAdjazenzliste(k);
-		dot.adjazenzlisteToDotformat(ali, "youtube");
-		sort.Topsort(ali);
+		dot.kantenlisteToDotformat(k, "kruskalwiki");
+		//Adjazenzliste ali = kantenlisteToAdjazenzliste(k);
+		//dot.adjazenzmatrixToDotformat(ad, "primkruskal");
+		//sort.Topsort(ali);
+		Kruskal.Kruskalalgorithmus(k);
 		
 		
 	}

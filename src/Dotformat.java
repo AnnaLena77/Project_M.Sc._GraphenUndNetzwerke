@@ -8,6 +8,7 @@ import graph.Adjazenzliste;
 import graph.Adjazenzmatrix;
 import graph.Kantenliste;
 
+
 public class Dotformat {
 
 	public static void kantenlisteToDotformat(Kantenliste k, String name) {
@@ -26,11 +27,11 @@ public class Dotformat {
 
 			}
 			else {
-				myWriter.write("digraph{");
+				myWriter.write("graph{");
 				myWriter.newLine();
 				for (int i = 0; i < k.size(); i++) {
 					myWriter.write(Integer.toString(k.getKanten().get(i).getStartknoten()));
-					myWriter.write(" -> ");
+					myWriter.write(" -- ");
 					myWriter.write(Integer.toString(k.getKanten().get(i).getEndknoten()));
 					myWriter.write(" [label=");
 					myWriter.write(Integer.toString(k.getKanten().get(i).getWeight()));
@@ -65,13 +66,13 @@ public class Dotformat {
 					}
 				}
 			} else {
-				myWriter.write("digraph{");
+				myWriter.write("graph{");
 				myWriter.newLine();
 				for(int i=0; i<adj.getAdjazenzmatrix().length; i++) {
 					for(int j=0; j<adj.getAdjazenzmatrix().length; j++) {
 						if(adj.getAdjazenzmatrix()[i][j]!=0) {
 							myWriter.write(Integer.toString(i+1));
-							myWriter.write(" -> ");
+							myWriter.write(" -- ");
 							myWriter.write(Integer.toString(j+1));
 							myWriter.write(" [label=");
 							myWriter.write(Integer.toString(adj.getAdjazenzmatrix()[i][j]));
@@ -106,12 +107,12 @@ public class Dotformat {
 					}
 				}
 			} else {
-				myWriter.write("digraph{");
+				myWriter.write("graph{");
 				myWriter.newLine();
 				for(int i=0; i<ali.getAdjazenzliste().length; i++) {
 					for(int j = 0; j<ali.getAdjazenzliste()[i].size(); j++) {
 							myWriter.write(Integer.toString(i+1));
-							myWriter.write(" -> ");
+							myWriter.write(" -- ");
 							myWriter.write((Integer.toString(ali.getAdjazenzliste()[i].get(j))));
 							myWriter.newLine();
 					}

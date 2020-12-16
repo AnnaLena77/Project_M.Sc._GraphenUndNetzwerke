@@ -39,5 +39,8 @@ public class Kante {
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
+	public void printKante() {
+		System.out.println(this.startknoten + " " + this.endknoten + " " + this.weight);
+	}
 	
 }

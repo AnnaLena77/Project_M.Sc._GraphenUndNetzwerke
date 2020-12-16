@@ -1,4 +1,4 @@
-package Topsort;
+package algorithms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,9 +7,9 @@ import java.util.Queue;
 
 import graph.Adjazenzliste;
 
-public class Sort {
+public class Topsort {
 	
-	public Sort(){
+	public Topsort(){
 		
 	}
 	
@@ -44,6 +44,7 @@ public class Sort {
 			//Wenn Queue leer wird, bevor alle Knoten eingetragen wurden, gibt es einen Zyklus!
 			if(q.isEmpty()) {
 				System.out.println("Der Graph enthält einen Zyklus und kann nicht topologisch sortiert werden");
+				break;
 			}
 			//Array topsort befüllen mit 1. Knoten aus der Queue
 			topsort[l] = q.poll(); //Knoten löschen

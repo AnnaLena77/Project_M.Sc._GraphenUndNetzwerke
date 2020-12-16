@@ -43,5 +43,10 @@ public class Kantenliste {
 	public void setKnotenanzahl(int knotenanzahl) {
 		this.knotenanzahl = knotenanzahl;
 	}
+	public void printKantenliste() {
+		for (Kante i: this.kanten) {
+			i.printKante();
+		}
+	}
 
 }
