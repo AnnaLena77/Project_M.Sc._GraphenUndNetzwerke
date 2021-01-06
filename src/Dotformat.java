@@ -27,11 +27,11 @@ public class Dotformat {
 
 			}
 			else {
-				myWriter.write("graph{");
+				myWriter.write("digraph{");
 				myWriter.newLine();
 				for (int i = 0; i < k.size(); i++) {
 					myWriter.write(Integer.toString(k.getKanten().get(i).getStartknoten()));
-					myWriter.write(" -- ");
+					myWriter.write(" -> ");
 					myWriter.write(Integer.toString(k.getKanten().get(i).getEndknoten()));
 					myWriter.write(" [label=");
 					myWriter.write(Integer.toString(k.getKanten().get(i).getWeight()));

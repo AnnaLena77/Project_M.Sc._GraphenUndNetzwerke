@@ -11,6 +11,7 @@ import graph.Adjazenzliste;
 import graph.Adjazenzmatrix;
 import graph.Kante;
 import graph.Kantenliste;
+import algorithms.Dijkstra;
 import algorithms.Kruskal;
 
 public class Start {
@@ -21,14 +22,16 @@ public class Start {
 		Dotformat dot = null;
 		//Sort sort = null;
 		
-		Kantenliste k = readFile("kruskalwiki");
-		//Adjazenzmatrix ad = kantenlisteToAdjazenzmatrix(k);
+		Kantenliste k = readFile("dijkstra");
+		Adjazenzmatrix ad = kantenlisteToAdjazenzmatrix(k);
 		//dot.adjazenzmatrixToDotformat(ad, "bellmannford");
-		dot.kantenlisteToDotformat(k, "kruskalwiki");
+		dot.kantenlisteToDotformat(k, "dijkstra");
 		//Adjazenzliste ali = kantenlisteToAdjazenzliste(k);
 		//dot.adjazenzmatrixToDotformat(ad, "primkruskal");
 		//sort.Topsort(ali);
-		Kruskal.Kruskalalgorithmus(k);
+		//Kruskal.Kruskalalgorithmus(k);
+		Dijkstra d = new Dijkstra();
+		d.dijkstraalgorithmus(ad, 1);
 		
 		
 	}

@@ -33,6 +33,6 @@ public class Teilmenge {
 		int y = find(b);
 		
 		verbindungen.put(x, y);
-		System.out.println("Knoten " + a + " " + b + " wurde hinzugefügt. Neue Hashmap: " + verbindungen);
+		System.out.println("Knoten " + a + " wurde der Root-Knoten " + b + " zugeordnet. Neue Hashmap: " + verbindungen);
 	}
 }
