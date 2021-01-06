@@ -54,6 +54,9 @@ public class Dijkstra {
 			nachbarknoten(ver);
 		}
 		System.out.println(menge);
+		for(Vertex vi : allNodes) {
+			System.out.println("Knoten: " + vi.getNode() + ", Kosten: " + vi.getDist());
+		}
 		
 	}
 	
@@ -75,10 +78,10 @@ public class Dijkstra {
 					if(!pq.contains(v)) {
 						pq.add(v);
 					} else {
-						System.out.println(v.getNode()+" Schon drin");
+						/*System.out.println(v.getNode()+" Schon drin");
 						for(Vertex vi : pq) {
 							System.out.println("Knoten: " + vi.getNode()+ " mit Dist " + vi.getDist());
-						}
+						}*/
 					}
 				}
 			}
