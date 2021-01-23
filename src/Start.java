@@ -22,10 +22,10 @@ public class Start {
 		Dotformat dot = null;
 		//Sort sort = null;
 		
-		Kantenliste k = readFile("dijkstra3");
+		Kantenliste k = readFile("spider");
 		Adjazenzmatrix ad = kantenlisteToAdjazenzmatrix(k);
 		//dot.adjazenzmatrixToDotformat(ad, "bellmannford");
-		dot.kantenlisteToDotformat(k, "dijkstra3");
+		dot.kantenlisteToDotformat(k, "spider");
 		//Adjazenzliste ali = kantenlisteToAdjazenzliste(k);
 		//dot.adjazenzmatrixToDotformat(ad, "primkruskal");
 		//sort.Topsort(ali);
